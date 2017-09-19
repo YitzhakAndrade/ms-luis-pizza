@@ -27,7 +27,12 @@ var luisAppUrl = process.env.LUIS_APP_URL
 bot.recognizer(new builder.LuisRecognizer(luisAppUrl));
 
 bot.dialog('pedir pizza', function (session, args) {
-    console.log('bateu aqui')
+	console.log('\n\n')
+    console.log(args)
+    if (args)
+    	for (i in args.intent.entities)
+    		console.log(args.intent.entities[i])
+    console.log('\n\n')
     session.send('identifiquei que vc quer pedir pizza')
 }).triggerAction({
     matches: 'pedir pizza'
